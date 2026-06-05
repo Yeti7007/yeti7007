@@ -1,44 +1,42 @@
 ## Yeti7007 Profile
-Unity / C# Gameplay Programmer & Developer
-🎓 Associate Degree in Game Development & Design
+**Gameplay Programmer & Developer**
 
-🛠️ 2+ years of Unity, C++, and C# experience
+🎓 **Associate Degree** in Game Development & Design
 
-🎮 Gameplay Programming Intern at ANTI ELIXIR LLC (1 year)
+🛠️ **2+ years** of Unity, C++, and C# experience / **1 year** of Unreal Engine 5
 
+🎮 **Gameplay Programming Intern** at ANTI ELIXIR LLC (1 year)
 
+📜 **​Epic Games Game Design Certified**​
 
-🕹️ Notable Projects
-🔹 Ventanita (VR) – Miami Dade College (MDC)
-Order-taking simulation VR game for Oculus Quest 2
+🕹️ **Notable Projects**:
 
-Developed menu UI logic and order timers
+🔹 **Ventanita (VR)** – Miami Dade College (MDC)
 
-Fixed bugs, balanced gameplay, and led playtesting
+ Order-taking simulation VR game for Oculus Quest 2
 
-🔹 Hangover Hero – ANTI ELIXIR LLC
-Side-scrolling runner game
+ Developed menu UI logic and order timers
 
-Designed and scripted the boss battle system
+ Fixed bugs, balanced gameplay, and led playtesting
 
-Balanced game mechanics, fixed bugs, and supported QA
+🔹 **Hangover Hero** – ANTI ELIXIR LLC
 
+ Side-scrolling runner game
 
+ Designed and scripted the boss battle system
 
-
+ Balanced game mechanics, fixed bugs, and supported QA
 
 🏆 Other Highlights
-Member of MDC MAGIC Club
 
-Participated as Staff at Spring 2024 Hackathon (MDC)
+Member of **MDC MAGIC Club**
 
-
-
-
+Participated as Staff at **Spring 2024 Hackathon** (MDC)
 
 📬 Contact Me
-I'm available for freelance, full-time, or collaboration opportunities.
 
+I'm available for freelance, full-time, or collaboration opportunities:
+jameslopez0611@gmail.com
 <!--
 **Yeti7007/yeti7007** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
