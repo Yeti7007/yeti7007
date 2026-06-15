@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -128,6 +129,189 @@ int daysBetween(Date d1, Date d2)
 	return days;
 }
 
+//(Program 5) Checks the Day of the Week in a Date
+int DayoftheWeek(Date date)
+{
+	tm time_in = {};
+
+	time_in.tm_year = date.year - 1900;
+	time_in.tm_mon = date.month - 1;
+	time_in.tm_mday = date.day;
+
+	mktime(&time_in);
+	return time_in.tm_wday + 1;
+}
+
+//To Calculate Easter
+bool isEaster(Date date)
+{
+	int em,ed;
+
+	int a = date.year % 19;
+	int b = date.year / 100;
+	int c = date.year % 100;
+	int d = b / 4;
+	int e = b % 4;
+	int f = (b + 8) / 25;
+	int g = (b - f + 1) / 3;
+	int h = (19 * a + b - d - g + 15) % 30;
+	int i = c / 4;
+	int k = c % 4;
+	int l = (32 + 2 * e + 2 * i - h - k) % 7;
+	int m = (a + 11 * h + 22 * 1) / 451;
+
+	em = (h + 1 - 7 * m + 114) / 31;
+	ed = ((h+ 1 - 7 * m + 114) % 31) + 1;
+	
+	return (date.day == ed && date.month == em);
+}
+
+//(Program 6) Checks if imputted date is a Holiday
+bool isHoliday(Date date)
+{
+	if (date.month == 1)
+	{
+		if (date.day == 1)
+		{
+			cout << "Happy New Years! What is my Resolution!\n";
+			return true;
+		}
+		else if (DayoftheWeek(date) == 2 && date.day > 14 && date.day <= 21)
+		{
+			cout << "Happy Martin Luther King Jr. Day! We will miss you\n";
+			return true;
+		}
+		return false;
+	}
+	else if (date.month == 2)
+	{
+		if (date.day == 14)
+		{
+			cout << "Happy Valentine's Day! Will you be my Valentine?\n";
+			return true;
+		}
+		else if (DayoftheWeek(date) == 2 && date.day > 14 && date.day <= 21)
+		{
+			cout << "Happy President's Day! Bless America!\n";
+			return true;
+		}
+		return false;
+	}
+	else if (date.month == 3)
+	{
+		if (date.day == 17)
+		{
+			cout << "Happy Saint Patrick's Day! Give me the Gold!\n";
+			return true;
+		}
+		if (isEaster(date))
+		{
+			cout << "Happy Easter! Time to go Egg Hunting!\n";
+			return true;
+		}
+		return false;
+	}
+	else if (date.month == 4)
+	{
+		if (isEaster(date))
+		{
+			cout << "Happy Easter! Time to go Egg Hunting!\n";
+			return true;
+		}
+		return false;
+	}
+	else if (date.month == 5)
+	{
+		if (DayoftheWeek(date) == 2 && date.day >= 25)
+		{
+			cout << "Happy Memorial Day! Thank You for Serving our Country!\n";
+			return true;
+		}
+		else if (DayoftheWeek(date) == 1 && date.day > 7 && date.day <= 14)
+		{
+			cout << "Happy Mother's Day! Thank Your Mother!\n";
+			return true;
+		}
+		return false;
+	}
+	else if (date.month == 6)
+	{
+		if (date.day == 19)
+		{
+			cout << "Happy Juneteenth! Freedom is Great!\n";
+			return true;
+		}
+		else if (DayoftheWeek(date) == 1 && date.day > 14 && date.day / 7 <= 21)
+		{
+			cout << "Happy Father's Day! Thank Your Father!\n";
+			return true;
+		}
+		return false;
+	}
+	else if (date.month == 7)
+	{
+		if (date.day == 4)
+		{
+			cout << "Happy Independence Day! Freedom is Great!\n";
+			return true;
+		}
+		return false;
+	}
+	else if (date.month == 8)
+		return false;
+	else if (date.month == 9)
+	{
+		if (DayoftheWeek(date) == 2 && date.day > 0 && date.day <= 7)
+		{
+			cout << "Happy Labor Day! No work for Today!\n";
+			return true;
+		}
+		return false;
+	}
+	else if (date.month == 10)
+	{
+		if (date.day == 31)
+		{
+			cout << "Happy Halloween! Boo!\n";
+			return true;
+		}
+		else if (DayoftheWeek(date) == 2 && date.day > 7 && date.day <= 14)
+		{
+			cout << "Happy Colombus Day! To America!\n";
+			return true;
+		}
+		return false;
+	}
+	else if (date.month == 11)
+	{
+		if (date.day == 11)
+		{
+			cout << "Happy Veterans Day! Your Service will be Honored!\n";
+			return true;
+		}
+		else if (DayoftheWeek(date) == 5 && date.day > 21 && date.day <= 28)
+		{
+			cout << "Happy Thanksgiving! Time to eat Turkey!\n";
+			return true;
+		}
+		return false;
+	}
+	else if (date.month == 12)
+	{
+		if (date.day == 25)
+		{
+			cout << "Merry Christmas! Time for some Presents!\n";
+			return true;
+		}
+		else if (date.day == 31)
+		{
+			cout << "Happy New Years Eve! Time for the Countdown!\n";
+			return true;
+		}
+		return false;
+	}
+}
+
 int main(void) 
 {
 	//Loop that ends if you press any key other than 1, 2, 3, and 4
@@ -143,6 +327,10 @@ int main(void)
 		<< "Press 3 to Check number of Days are in that Month of that Year\n"
 		//Press 4 to use Program 4
 		<< "Press 4 to Check if that year is a leap year\n"
+		// Press 5 to use Program 5
+		<< "Press 5 to Check the Day of the Week in a Date\n"
+		//Press 6 to use Program 6
+		<< "Press 6 to Check if the Date is a Holiday\n"
 		// Press any other key to exit
 		<< "Press any other key else to Exit Program\n";
 		//Input Specific Program
@@ -290,6 +478,106 @@ int main(void)
 			else if (leap == false)
 				cout << "It is not a Leap Year!" << endl;
 
+		}
+		//Program 5 or Day of the Week
+		else if (program == 5)
+		{
+			//date
+			Date dt;
+			//Boolean to check if Variables are Valid
+			bool valid;
+			//Integer to store Day of the Week
+			int dotw;
+			//Do while loop to check if Inputted Date is Valid
+			do
+			{
+				//Turn Valid True
+				valid = true;
+				cout << "Enter a date (y m d) (1900 and above): ";
+				//Input y, m, and d of the date
+				cin >> dt.year >> dt.month >> dt.day;
+				//If statement to check if Inputted Variables is Invalid
+				if (dt.month > 12 || dt.month < 1)
+				{
+					//Prints out Invalid Month
+					cout << "Inputted Invalid Month. Try Again.";
+					//Changes Valid to False to continue Loop
+					valid = false;
+				}
+				else if (dt.day > monthLength(dt.year, dt.month) || dt.day < 1)
+				{
+					//Prints out Invalid Day
+					cout << "Inputted Invalid Day. Try Again";
+					//Changes Valid to False to continue Loop
+					valid = false;
+				}
+				else if (dt.year < 1900)
+				{
+					//Prints out Invalid Year
+					cout << "Inputted Invalid Year. Try Again";
+					//Changes Valid to False to continue Loop
+					valid = false;
+				}
+			}while (valid == false);
+			//Checks the Day of the Week
+			dotw = DayoftheWeek(dt);
+			//Prints Day of the Week
+			switch (dotw)
+			{
+				case 1: cout << "Day of the Week is Sunday!\n"; break;
+				case 2: cout << "Day of the Week is Monday!\n"; break;
+				case 3: cout << "Day of the Week is Tuesday!\n"; break;
+				case 4: cout << "Day of the Week is Wednesday!\n"; break;
+				case 5: cout << "Day of the Week is Thursday!\n"; break;
+				case 6: cout << "Day of the Week is Friday!\n"; break;
+				case 7: cout << "Day of the Week is Saturday!\n"; break;
+			}
+		}
+		//Program 6 or Holiday
+		else if (program == 6)
+		{
+			//date
+			Date dt;
+			//Boolean to check if Variables are Valid
+			bool valid, holiday;
+			//Do while loop to check if Inputted Date is Valid
+			do
+			{
+				//Turn Valid True
+				valid = true;
+				cout << "Enter a date (y m d) (1900 and above): ";
+				//Input y, m, and d of the date
+				cin >> dt.year >> dt.month >> dt.day;
+				//If statement to check if Inputted Variables is Invalid
+				if (dt.month > 12 || dt.month < 1)
+				{
+					//Prints out Invalid Month
+					cout << "Inputted Invalid Month. Try Again.";
+					//Changes Valid to False to continue Loop
+					valid = false;
+				}
+				else if (dt.day > monthLength(dt.year, dt.month) || dt.day < 1)
+				{
+					//Prints out Invalid Day
+					cout << "Inputted Invalid Day. Try Again";
+					//Changes Valid to False to continue Loop
+					valid = false;
+				}
+				else if (dt.year < 1900)
+				{
+					//Prints out Invalid Year
+					cout << "Inputted Invalid Year. Try Again";
+					//Changes Valid to False to continue Loop
+					valid = false;
+				}
+			}while (valid == false);
+			//Checks if Holiday is True or False
+			holiday = isHoliday(dt);
+			//Prints out if Date is a Holiday or not
+			if (holiday == true)
+				cout << "It is a Holiday!\n";
+			else if (holiday == false)
+				cout << "It is not a Holiday\n";
 		}
 		//Ends Program
 		else
